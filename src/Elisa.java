@@ -21,14 +21,24 @@ public class Elisa {
         int responseType = rnd.nextInt(3);
         if (responseType == 1) {
             response = replacePronouns(response);
-
-            String [] qualifiers = {"Why do you say that", "You seem to think that", "So, you are concerned that"};
-            response =  qualifiers [rnd.nextInt(qualifiers.length)]+ " " + response + "?";
+            response = addQualifier(response, rnd);
         }
         else {
-            String [] hedges = {"Please tell me more", "Many of my patients tell me the same thing", "It is getting late, maybe we had better quit"};
-            response = hedges [rnd.nextInt(hedges.length)];
+            response = hedge(rnd);
         }
+        return response;
+    }
+
+    private static String hedge(Random rnd) {
+        String response;
+        String [] hedges = {"Please tell me more", "Many of my patients tell me the same thing", "It is getting late, maybe we had better quit"};
+        response = hedges [rnd.nextInt(hedges.length)];
+        return response;
+    }
+
+    private static String addQualifier(String response, Random rnd) {
+        String [] qualifiers = {"Why do you say that", "You seem to think that", "So, you are concerned that"};
+        response =  qualifiers [rnd.nextInt(qualifiers.length)]+ " " + response + "?";
         return response;
     }
 
