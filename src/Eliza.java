@@ -46,7 +46,9 @@ public class Eliza {
         String [] responses = {"me", "my", "I", "am"};
         String [] replacements = {"you", "your", "you", "are"};
         for (int i = 0; i < responses.length; i++) {
-            response = response.replace(responses[i], replacements[i]);
+            if (response.contains (" " + responses[i] )|| response.contains(responses[i] + " ") || response.equals(responses[i])) {
+                response = response.replace(responses[i], replacements[i]);
+            }
         }
         return response;
     }
