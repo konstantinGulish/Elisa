@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.Random;
-public class Elisa {
+public class Eliza {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
