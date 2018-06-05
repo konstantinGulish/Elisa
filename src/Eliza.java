@@ -18,7 +18,7 @@ public class Eliza {
     private static String respond(String prompt) {
         String response = prompt;
         Random rnd = new Random();
-        int responseType = rnd.nextInt(3);
+        int responseType = 1 + rnd.nextInt(2);
         if (responseType == 1) {
             response = replacePronouns(response);
             response = addQualifier(response, rnd);
@@ -26,15 +26,16 @@ public class Eliza {
         else if(responseType == 2){
             response = hedge(rnd);
         }
-        else if (prompt.equals("caps")) {
-            response = respond(prompt).toUpperCase();
-        }
-        return response;
+        if (prompt.contains ("caps")) return response.replaceAll ("caps", "").toUpperCase();
+        else if (prompt.contains ("lower case")) return response.replaceAll ("lower case", "").toLowerCase();
+        else return response;
     }
 
     private static String hedge(Random rnd) {
         String response;
-        String [] hedgesA = {"Please tell me more", "Many of my patients tell me the same thing", "It is getting late, maybe we had better quit"};
+        String [] hedgesA = {"Please tell me more",
+                             "Many of my patients tell me the same thing",
+                             "It is getting late, maybe we had better quit"};
         ArrayList<String> hedges = new ArrayList<String>(Arrays.asList(hedgesA));
         response = hedges.get (rnd.nextInt(hedges.size()));
         return response;
