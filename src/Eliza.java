@@ -10,9 +10,11 @@ public class Eliza {
             System.out.print("Enter your response here or Q to quit: ");
             prompt = in.nextLine();
             if (prompt.equals("Q") || prompt.equals("q"))  break;
-                System.out.println(respond(prompt));
+            String finalResponse = respond(prompt);
+            System.out.println(finalResponse);
+                if (finalResponse.equals("It is getting late, maybe we had better quit")) break;
         }
-
+    System.exit(0);
     }
 
     private static String respond(String prompt) {
@@ -37,8 +39,13 @@ public class Eliza {
                              "Many of my patients tell me the same thing",
                              "It is getting late, maybe we had better quit"};
         ArrayList<String> hedges = new ArrayList<String>(Arrays.asList(hedgesA));
-        response = hedges.get (rnd.nextInt(hedges.size()));
-        return response;
+        HashSet<String> hedgesHash = new HashSet<>(hedges);
+        Iterator it = hedgesHash.iterator();
+        int responseId = rnd.nextInt(hedgesHash.size());
+        for (int i = 0; i < responseId; i++) {
+            it.next();
+        }
+        return it.next().toString();
     }
 
     private static String addQualifier(String response, Random rnd) {
