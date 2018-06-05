@@ -1,7 +1,5 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.Random;
+import java.util.*;
+
 public class Eliza {
 
     public static void main(String[] args) {
@@ -20,7 +18,7 @@ public class Eliza {
     private static String respond(String prompt) {
         String response = prompt;
         Random rnd = new Random();
-        int responseType = rnd.nextInt(3);
+        int responseType = 1; //rnd.nextInt(3);
         if (responseType == 1) {
             response = replacePronouns(response);
             response = addQualifier(response, rnd);
@@ -49,11 +47,15 @@ public class Eliza {
     private static String replacePronouns(String response) {
         String [] responsesA = {"me", "my", "I", "am"};
         ArrayList<String> responses = new ArrayList<String>(Arrays.asList(responsesA));
+        HashMap<String, String> replacementResponses = new HashMap();
         String [] replacementsA = {"you", "your", "you", "are"};
         ArrayList<String> replacements = new ArrayList<String>(Arrays.asList( replacementsA));
-        for (int i = 0; i < responses.size(); i++) {
+        for (int i = 0; i < responsesA.length; i++){
+                replacementResponses.put(responsesA[i],replacementsA[i]);
+        }
+        for (int i = 0; i < replacementResponses.size(); i++) {
             if (response.contains (" " + responses.get (i) )|| response.contains(responses.get(i) + " ") || response.equals(responses.get (i))) {
-                response = response.replaceAll(responses.get(i), replacements.get(i));
+                response = response.replaceAll(responsesA[i], replacementResponses.get(responsesA[i]));
             }
         }
         return response;
