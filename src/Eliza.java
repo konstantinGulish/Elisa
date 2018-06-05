@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Random;
 public class Eliza {
@@ -31,23 +33,27 @@ public class Eliza {
 
     private static String hedge(Random rnd) {
         String response;
-        String [] hedges = {"Please tell me more", "Many of my patients tell me the same thing", "It is getting late, maybe we had better quit"};
-        response = hedges [rnd.nextInt(hedges.length)];
+        String [] hedgesA = {"Please tell me more", "Many of my patients tell me the same thing", "It is getting late, maybe we had better quit"};
+        ArrayList<String> hedges = new ArrayList<String>(Arrays.asList(hedgesA));
+        response = hedges.get (rnd.nextInt(hedges.size()));
         return response;
     }
 
     private static String addQualifier(String response, Random rnd) {
-        String [] qualifiers = {"Why do you say that", "You seem to think that", "So, you are concerned that"};
-        response =  qualifiers [rnd.nextInt(qualifiers.length)]+ " " + response + "?";
+        String [] qualifiersA = {"Why do you say that", "You seem to think that", "So, you are concerned that"};
+        ArrayList<String> qualifiers = new ArrayList<String>(Arrays.asList(qualifiersA));
+        response =  qualifiers.get(rnd.nextInt(qualifiers.size()))+ " " + response + "?";
         return response;
     }
 
     private static String replacePronouns(String response) {
-        String [] responses = {"me", "my", "I", "am"};
-        String [] replacements = {"you", "your", "you", "are"};
-        for (int i = 0; i < responses.length; i++) {
-            if (response.contains (" " + responses[i] )|| response.contains(responses[i] + " ") || response.equals(responses[i])) {
-                response = response.replaceAll(responses[i], replacements[i]);
+        String [] responsesA = {"me", "my", "I", "am"};
+        ArrayList<String> responses = new ArrayList<String>(Arrays.asList(responsesA));
+        String [] replacementsA = {"you", "your", "you", "are"};
+        ArrayList<String> replacements = new ArrayList<String>(Arrays.asList( replacementsA));
+        for (int i = 0; i < responses.size(); i++) {
+            if (response.contains (" " + responses.get (i) )|| response.contains(responses.get(i) + " ") || response.equals(responses.get (i))) {
+                response = response.replaceAll(responses.get(i), replacements.get(i));
             }
         }
         return response;
