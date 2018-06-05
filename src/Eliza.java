@@ -18,13 +18,16 @@ public class Eliza {
     private static String respond(String prompt) {
         String response = prompt;
         Random rnd = new Random();
-        int responseType = 1; //rnd.nextInt(3);
+        int responseType = rnd.nextInt(3);
         if (responseType == 1) {
             response = replacePronouns(response);
             response = addQualifier(response, rnd);
         }
-        else {
+        else if(responseType == 2){
             response = hedge(rnd);
+        }
+        else if (prompt.equals("caps")) {
+            response = respond(prompt).toUpperCase();
         }
         return response;
     }
