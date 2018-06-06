@@ -6,10 +6,15 @@ public class PigLatin {
 
     //instance methods
     public String create (String userPrompt) {
+        //split input into a string array of words
         String [] words = userPrompt.split(" ");
+
+        //create a StringBuffer array to hold the words to be changed
         StringBuffer [] wordsBuffer = new StringBuffer[words.length];
         for (int i=0; i < words.length; i++) {
             wordsBuffer[i] = new StringBuffer(words[i]);
+
+        // check if words start with a vowel and append "ay"
             if     (wordsBuffer[i].charAt(0) == 'a' ||
                     wordsBuffer[i].charAt(0) == 'e' ||
                     wordsBuffer[i].charAt(0) == 'o' ||
@@ -17,6 +22,8 @@ public class PigLatin {
                     wordsBuffer[i].charAt(0) == 'i') {
                 wordsBuffer[i].append("ay");
             }
+
+        // remove first later, append it at the end before the "ay"
             else {
                 char first = wordsBuffer[i].charAt(0);
                 first = Character.toLowerCase(first);
@@ -25,11 +32,12 @@ public class PigLatin {
             }
         }
         String pigLatin = "";
+
+        // loop through the array and turn the elements back into a string
         for (int i = 0; i < wordsBuffer.length; i++) {
             pigLatin += wordsBuffer[i].toString() + " ";
         }
-
-
+        // remove punctuation and turn everything into lower case
         return pigLatin.replaceAll("\\p{Punct}+", "").toLowerCase();
     }
 }

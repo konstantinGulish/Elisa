@@ -6,13 +6,17 @@ public class Eliza {
         Scanner in = new Scanner(System.in);
         String prompt = "";
         System.out.print("Good day. What is your problem? " );
+        int counter = 0;
         while (!prompt.equals("Q") || !prompt.equals("q")) {
             System.out.print("Enter your response here or Q to quit: ");
             prompt = in.nextLine();
             if (prompt.equals("Q") || prompt.equals("q"))  break;
             String finalResponse = respond(prompt);
             System.out.println(finalResponse);
-                if (finalResponse.equals("It is getting late, maybe we had better quit")) break;
+            counter++;
+                if (counter==8) {
+                    System.out.println("It is getting late, maybe we had better quit.");
+                    break;}
         }
     System.exit(0);
     }
@@ -34,6 +38,7 @@ public class Eliza {
         }
         if (prompt.contains ("caps")) return response.replaceAll ("caps", "").toUpperCase();
         else if (prompt.contains ("lower case")) return response.replaceAll ("lower case", "").toLowerCase();
+        else if (prompt.contains("game")) return RockPaperScissors.playGame();
         else return response;
     }
 
@@ -63,7 +68,7 @@ public class Eliza {
         ArrayList<String> responses = new ArrayList<String>(Arrays.asList(responsesA));
         HashMap<String, String> replacementResponses = new HashMap();
         String [] replacementsA = {"you", "your", "you", "are"};
-        ArrayList<String> replacements = new ArrayList<String>(Arrays.asList( replacementsA));
+        //ArrayList<String> replacements = new ArrayList<String>(Arrays.asList( replacementsA));
         for (int i = 0; i < responsesA.length; i++){
                 replacementResponses.put(responsesA[i],replacementsA[i]);
         }
