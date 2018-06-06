@@ -5,11 +5,14 @@ public class Eliza {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String prompt = "";
+        ArrayList<String> logOfResponses = new ArrayList<>();
+        ArrayList<String> userMessages = new ArrayList<>();
         System.out.print("Good day. What is your problem? " );
         int counter = 0;
         while (!prompt.equalsIgnoreCase("q")) {
             System.out.print("Enter your response here or Q to quit: ");
             prompt = in.nextLine();
+            userMessages.add(prompt);
             if (prompt.equalsIgnoreCase("game")) {
                 int userChoice; // represents rock, paper, scissors
                 System.out.print("This is a basic text-based rock, paper, scissors game. \n" +
@@ -27,7 +30,7 @@ public class Eliza {
             }
 
             else if (prompt.equals("Q") || prompt.equals("q"))  break;
-            String finalResponse = respond(prompt);
+            String finalResponse = respond(prompt,logOfResponses);
             System.out.println(finalResponse);
             counter++;
                 if (counter==8) {
@@ -37,7 +40,7 @@ public class Eliza {
     System.exit(0);
     }
 
-    private static String respond(String prompt) {
+    private static String respond(String prompt, ArrayList<String> logOfResponses) {
         String response = prompt;
         Random rnd = new Random();
         int responseType = 1 + rnd.nextInt(2);
@@ -50,15 +53,26 @@ public class Eliza {
         }
         if (prompt.equals("pig latin")){
             PigLatin pig = new PigLatin();
+            logOfResponses.add(pig.create(response));
             return pig.create(response);
         }
-        if (prompt.equalsIgnoreCase ("caps")) return response.replaceAll ("caps", "").toUpperCase();
-        else if (prompt.equalsIgnoreCase ("lower case")) return response.replaceAll ("lower case", "").toLowerCase();
+        if (prompt.equalsIgnoreCase ("caps")) {
+            logOfResponses.add(response.replaceAll("caps", "").toUpperCase());
+            return response.replaceAll("caps", "").toUpperCase();
+        }
+        else if (prompt.equalsIgnoreCase ("lower case")) {
+            logOfResponses.add(response.replaceAll ("lower case", "").toLowerCase());
+            return response.replaceAll ("lower case", "").toLowerCase();
+        }
         else if (prompt.equalsIgnoreCase ("red")) {
             RedText rd = new RedText();
+            logOfResponses.add(rd.makeRed(response));
             return rd.makeRed(response);
         }
-        else return response;
+        else {
+            logOfResponses.add(response);
+            return response;
+        }
     }
 
     private static String hedge(Random rnd) {
