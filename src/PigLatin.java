@@ -31,13 +31,13 @@ public class PigLatin {
                 wordsBuffer[i].append(first + "ay");
             }
         }
-        String pigLatin = "";
+        StringBuilder pigLatin = new StringBuilder();
 
         // loop through the array and turn the elements back into a string
         for (int i = 0; i < wordsBuffer.length; i++) {
-            pigLatin += wordsBuffer[i].toString() + " ";
+            pigLatin.append(wordsBuffer[i]).append(" ");
         }
         // remove punctuation and turn everything into lower case
-        return pigLatin.replaceAll("\\p{Punct}+", "").toLowerCase();
+        return pigLatin.toString().replaceAll("\\p{Punct}+", "").toLowerCase();
     }
 }

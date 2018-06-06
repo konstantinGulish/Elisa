@@ -54,7 +54,6 @@ public class Eliza {
         }
         if (prompt.equalsIgnoreCase ("caps")) return response.replaceAll ("caps", "").toUpperCase();
         else if (prompt.equalsIgnoreCase ("lower case")) return response.replaceAll ("lower case", "").toLowerCase();
-        //else if (prompt.contains("game")) return RockPaperScissors.playGame();
         else return response;
     }
 

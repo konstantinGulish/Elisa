@@ -35,7 +35,7 @@ public class RockPaperScissorsGame {
     }
 
     /**
-     * This function processes compuiter's choice.
+     * This function processes computer's choice.
      *
      * @param number is an integer based on random number chosen by the function
      */
