@@ -7,7 +7,7 @@ public class Eliza {
         String prompt = "";
         System.out.print("Good day. What is your problem? " );
         int counter = 0;
-        while (!prompt.equals("Q") || !prompt.equals("q")) {
+        while (!prompt.equalsIgnoreCase("q")) {
             System.out.print("Enter your response here or Q to quit: ");
             prompt = in.nextLine();
             if (prompt.equalsIgnoreCase("game")) {
