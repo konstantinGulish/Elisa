@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9323ea3f-8739-4200-9226-f5a8063ef7d6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/Eliza.java" afterPath="$PROJECT_DIR$/src/Eliza.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -281,7 +280,7 @@
       <updated>1528289243389</updated>
       <workItem from="1528289248749" duration="5109000" />
       <workItem from="1528295536378" duration="9975000" />
-      <workItem from="1528306767733" duration="2683000" />
+      <workItem from="1528306767733" duration="2696000" />
     </task>
     <task id="LOCAL-00001" summary="added Rock Paper Scissors game">
       <created>1528295628594</created>
@@ -339,11 +338,18 @@
       <option name="project" value="LOCAL" />
       <updated>1528307340751</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="corrected hedges and qualifiers to avoid no such element exception">
+      <created>1528310049106</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1528310049106</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17767000" />
+    <option name="totallyTimeSpent" value="17780000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
