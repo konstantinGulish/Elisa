@@ -54,6 +54,10 @@ public class Eliza {
         }
         if (prompt.equalsIgnoreCase ("caps")) return response.replaceAll ("caps", "").toUpperCase();
         else if (prompt.equalsIgnoreCase ("lower case")) return response.replaceAll ("lower case", "").toLowerCase();
+        else if (prompt.equalsIgnoreCase ("red")) {
+            RedText rd = new RedText();
+            return rd.makeRed(response);
+        }
         else return response;
     }
 
