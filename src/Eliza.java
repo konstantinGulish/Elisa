@@ -10,7 +10,23 @@ public class Eliza {
         while (!prompt.equals("Q") || !prompt.equals("q")) {
             System.out.print("Enter your response here or Q to quit: ");
             prompt = in.nextLine();
-            if (prompt.equals("Q") || prompt.equals("q"))  break;
+            if (prompt.equalsIgnoreCase("game")) {
+                int userChoice; // represents rock, paper, scissors
+                System.out.print("This is a basic text-based rock, paper, scissors game. \n" +
+                        "You are playing against Eliza. \nPlease enter:\n\t(1) for rock\n\t(2) for paper\n\t(3) for scissors\n" +
+                        "Your choice: ");
+                userChoice = in.nextInt();
+                System.out.println();
+                    while (userChoice < 1 || userChoice > 3) {
+                        System.out.print("Your choice is invalid.\nPlease enter a whole number between 1 and 3.\nYour choice: ");
+                        System.out.println();
+                        userChoice = in.nextInt();
+                    }
+                System.out.println(RockPaperScissors.playGame(userChoice));
+                break;
+            }
+
+            else if (prompt.equals("Q") || prompt.equals("q"))  break;
             String finalResponse = respond(prompt);
             System.out.println(finalResponse);
             counter++;
@@ -36,9 +52,9 @@ public class Eliza {
             PigLatin pig = new PigLatin();
             return pig.create(response);
         }
-        if (prompt.contains ("caps")) return response.replaceAll ("caps", "").toUpperCase();
-        else if (prompt.contains ("lower case")) return response.replaceAll ("lower case", "").toLowerCase();
-        else if (prompt.contains("game")) return RockPaperScissors.playGame();
+        if (prompt.equalsIgnoreCase ("caps")) return response.replaceAll ("caps", "").toUpperCase();
+        else if (prompt.equalsIgnoreCase ("lower case")) return response.replaceAll ("lower case", "").toLowerCase();
+        //else if (prompt.contains("game")) return RockPaperScissors.playGame();
         else return response;
     }
 

@@ -1,5 +1,5 @@
 import java.util.Random;
-import java.util.Scanner;
+
 public class RockPaperScissors {
 
 
@@ -9,18 +9,7 @@ public class RockPaperScissors {
         return 1 + rnd.nextInt(3);
     }
 
-    public static String playGame() {
-        System.out.print("This is a basic text-based rock, paper, scissors game. \n" +
-                "You are playing against Eliza. \nPlease enter:\n\t(1) for rock\n\t(2) for paper\n\t(3) for scissors\n" +
-                "Your choice: ");
-        Scanner input = new Scanner(System.in);
-        int choice = input.nextInt();
-        System.out.println();
-        while (choice < 1 || choice > 3) {
-            System.out.print("Your choice is invalid.\nPlease enter a whole number between 1 and 3.\nYour choice: ");
-            choice = input.nextInt();
-            System.out.println();
-        }
+    public static String playGame(int choice) {
         yourChoice(choice);
         return whoWon(choice,computerChoice(getRandom()));
     }
