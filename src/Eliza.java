@@ -22,7 +22,7 @@ public class Eliza {
                         System.out.println();
                         userChoice = in.nextInt();
                     }
-                System.out.println(RockPaperScissors.playGame(userChoice));
+                System.out.println(RockPaperScissorsGame.playGame(userChoice));
                 break;
             }
 

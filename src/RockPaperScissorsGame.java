@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class RockPaperScissors {
+public class RockPaperScissorsGame {
 
 
     //static methods
