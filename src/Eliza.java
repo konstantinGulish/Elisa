@@ -78,8 +78,13 @@ public class Eliza {
     private static String addQualifier(String response, Random rnd) {
         String [] qualifiersA = {"Why do you say that", "You seem to think that", "So, you are concerned that"};
         ArrayList<String> qualifiers = new ArrayList<String>(Arrays.asList(qualifiersA));
-        response =  qualifiers.get(rnd.nextInt(qualifiers.size()))+ " " + response + "?";
-        return response;
+        HashSet<String> qualifiersHash = new HashSet<>(qualifiers);
+        Iterator it = qualifiersHash.iterator();
+        int responseId = rnd.nextInt(qualifiersHash.size());
+        for (int i = 0; i < responseId; i++) {
+            it.next();
+        }
+        return it.next().toString()+ " " + response + "?";
     }
 
     private static String replacePronouns(String response) {
