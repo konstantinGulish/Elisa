@@ -70,8 +70,8 @@ public class Eliza {
         Iterator it = hedgesHash.iterator();
         String hedge = "";
         int responseId = rnd.nextInt(hedgesHash.size());
-        for (int i = 0; i < responseId; i++) {
-            hedge = it.next().toString();
+        for (int i = 0; i <= responseId; i++) {
+            if (it.hasNext()) hedge = it.next().toString();
         }
         return hedge;
     }
@@ -83,7 +83,7 @@ public class Eliza {
         Iterator it = qualifiersHash.iterator();
         int responseId = rnd.nextInt(qualifiersHash.size());
         String qualifier = "";
-        for (int i = 0; i < responseId; i++) {
+        for (int i = 0; i <= responseId; i++) {
             qualifier = it.next().toString();
         }
         return qualifier + " " + response + "?";
