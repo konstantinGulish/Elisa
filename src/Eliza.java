@@ -28,13 +28,16 @@ public class Eliza {
         else if(responseType == 2){
             response = hedge(rnd);
         }
+        if (prompt.equals("pig latin")){
+            PigLatin pig = new PigLatin();
+            return pig.create(response);
+        }
         if (prompt.contains ("caps")) return response.replaceAll ("caps", "").toUpperCase();
         else if (prompt.contains ("lower case")) return response.replaceAll ("lower case", "").toLowerCase();
         else return response;
     }
 
     private static String hedge(Random rnd) {
-        String response;
         String [] hedgesA = {"Please tell me more",
                              "Many of my patients tell me the same thing",
                              "It is getting late, maybe we had better quit"};
