@@ -68,11 +68,12 @@ public class Eliza {
         ArrayList<String> hedges = new ArrayList<String>(Arrays.asList(hedgesA));
         HashSet<String> hedgesHash = new HashSet<>(hedges);
         Iterator it = hedgesHash.iterator();
+        String hedge = "";
         int responseId = rnd.nextInt(hedgesHash.size());
         for (int i = 0; i < responseId; i++) {
-            it.next();
+            hedge = it.next().toString();
         }
-        return it.next().toString();
+        return hedge;
     }
 
     private static String addQualifier(String response, Random rnd) {
@@ -81,10 +82,11 @@ public class Eliza {
         HashSet<String> qualifiersHash = new HashSet<>(qualifiers);
         Iterator it = qualifiersHash.iterator();
         int responseId = rnd.nextInt(qualifiersHash.size());
+        String qualifier = "";
         for (int i = 0; i < responseId; i++) {
-            it.next();
+            response = it.next().toString();
         }
-        return it.next().toString()+ " " + response + "?";
+        return qualifier + " " + response + "?";
     }
 
     private static String replacePronouns(String response) {
