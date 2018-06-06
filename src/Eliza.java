@@ -84,7 +84,7 @@ public class Eliza {
         int responseId = rnd.nextInt(qualifiersHash.size());
         String qualifier = "";
         for (int i = 0; i < responseId; i++) {
-            response = it.next().toString();
+            qualifier = it.next().toString();
         }
         return qualifier + " " + response + "?";
     }
